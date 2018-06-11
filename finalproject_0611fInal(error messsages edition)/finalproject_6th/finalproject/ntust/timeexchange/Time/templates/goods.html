@@ -1,0 +1,178 @@
+{% load staticfiles %}
+<!DOCTYPE HTML>
+<!--
+	Linear by TEMPLATED
+    templated.co @templatedco
+    Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+<html>
+	<head>
+		<title>Goods</title>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,700,500,900' rel='stylesheet' type='text/css'>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+		<script src="{% static 'js/skel.min.js' %}"></script>
+		<script src="{% static 'js/skel-panels.min.js' %}"></script>
+		<script src="{% static 'js/init.js' %}"></script>
+		
+			<link rel="stylesheet" href="{% static 'css/skel-noscript.css' %}" />
+			<link rel="stylesheet" href="{% static 'css/style.css' %}" />
+			<link rel="stylesheet" href="{% static 'css/style-desktop.css' %}" />
+		
+	</head>
+	<body>
+
+	<!-- Header -->
+		<div id="header">
+			<div id="nav-wrapper"> 
+				<!-- Nav -->
+				<nav id="nav">
+					<ul>
+						<li><a href="/timeexchange">Homepage</a></li>
+						
+						<li class="active"><a href="/timeexchange/goods">商品列表</a></li>
+						<li><a href="/timeexchange/goodspost">刊登商品</a></li>
+						
+						<li>{% if request.user.is_authenticated %}
+							<a href="/timeexchange/register/">我的資料</a>
+							{% else %}
+							<a href="/timeexchange/register">會員註冊</a>
+							{% endif %}
+						</li>
+						
+						<li>{% if request.user.is_authenticated %}
+            				<a>{{request.user}},您好</a>
+            				<a href="/timeexchange/logout/">登出</a>            				
+            				{% else %}
+            				<a href="/timeexchange/login">登入</a>
+        					{% endif %}
+        				</li>
+        
+					</ul>
+				</nav>
+			</div>
+			<div class="container"> 
+				
+				<!-- Logo -->
+				<div id="logo">
+					<h1><a href="#">TimeEXchange</a></h1>
+					<span class="tag">By Yihsiu,George,Titus</span>
+				</div>
+			</div>
+		</div>
+	<!-- Header --> 
+
+	<!-- Main -->
+		<div id="main">
+			<div id="content" class="container">
+				<section>
+					<header>
+						<h2>商品列表</h2>
+						<span class="byline">
+							
+							{% if request.user.is_authenticated %}
+            				<a>{{request.user}},買起來</a> <br>
+            				{%for b in buyer%}
+            				<a>你的餘額:{{b.remaintime}}</a>   
+            				{% endfor %}     				
+            				{% else %}
+            				<a>快點<a href="/timeexchange/login">登入</a>買起來</a>
+        					{% endif %}
+						</span>
+
+						<p style="color:red">
+ 	 {% if messages %}
+                {% for message in messages %}
+                    {{message}}
+                {% endfor %}
+            {% endif %}
+ </p>
+
+						<!--若無登入顯示這個-->
+						{%for g2 in goods2%} 
+							<hr size="10px" align="justify" width="100%">
+							<strong>{{g2.coursename}} </strong><br>
+							{{g2.coursedescription}}
+							<div align="right">花費時間{{g2.coursevalue}}</div>
+						
+							<div align="right">賣家{{g2.user.username}}</div>
+							<div align="right">聯絡方式{{g2.contact}}</div>
+							
+						{{g2.pub_date}} <br>
+						{% endfor %}
+
+						<!--若登入顯示這個-->
+						{%for g in goods%} 
+							<hr size="10px" align="justify" width="100%">
+							<strong>{{g.coursename}} </strong><br>
+							{{g.coursedescription}}
+							<div align="right">花費時間{{g.coursevalue}}</div>
+						
+							<div align="right">賣家{{g.user.username}}</div>
+							<div align="right">聯絡方式{{g.contact}}</div>
+							
+							
+						{{g.pub_date}} <br>
+						{% if request.user.is_authenticated %}
+						<button><a href="/timeexchange/transaction/?id={{g.id}}">購買</a></button><br>
+						{% endif %}
+						{% endfor %}
+					
+
+					</header>
+
+
+
+				</section>
+			</div>
+		</div>
+	<!-- /Main -->
+
+	<!-- Tweet -->
+		<div id="tweet">
+			<div class="container">
+				<section>
+					<blockquote>	
+				
+					&ldquo;Jerry 母湯 ， Jerry , please don't .-------光頭葛格&rdquo;<br>
+
+				
+				</blockquote>
+				</section>
+			</div>
+		</div>
+	<!-- /Tweet -->
+
+	<!-- Footer -->
+		<div id="footer">
+			<div class="container">
+				<section>
+					<header><h2>Final all A plus. Jerry,We love you.</h2>
+						<span class="byline">不歡迎聯絡我們<br>
+						拜託不要聯絡我們
+					    </span>
+						<span class="byline"></span>
+					</header>
+					<ul class="contact">
+						<li><a href="#" class="fa fa-twitter"><span>Twitter</span></a></li>
+						<li class="active"><a href="#" class="fa fa-facebook"><span>Facebook</span></a></li>
+						<li><a href="#" class="fa fa-dribbble"><span>Pinterest</span></a></li>
+						<li><a href="#" class="fa fa-tumblr"><span>Google+</span></a></li>
+					</ul>
+				</section>
+			</div>
+		</div>
+	<!-- /Footer -->
+
+	<!-- Copyright -->
+		<div id="copyright">
+			<div class="container">
+				Design: <a href="http://templated.co">TEMPLATED</a> Images: <a href="http://unsplash.com">Unsplash</a> (<a href="http://unsplash.com/cc0">CC0</a>)
+			</div>
+		</div>
+
+
+	</body>
+</html>

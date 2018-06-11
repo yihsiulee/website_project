@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Register</title>
+</head>
+<body >
+	
+<form action="/timeexchange/saveaccount/" method='POST'>{% csrf_token %}
+<br>Email:
+<input type="email" name="email"><br>
+<br>Password:
+<input type="password" name="password"><br>
+<br>Name:
+<input type="text" name="name"><br>
+<br>Birthday:
+<input type="date" name="birthday"><br>
+<br>Gender:<br>
+<input type="radio" name="gender" value="male" checked>Male<br>
+<input type="radio" name="gender" value="female">Female<br>
+<br>Phonenumber:
+<input type="text" name="phonenumber"><br>
+<br><input type="submit" name="submit" value="提交">
+</form>
+</body>
+</html>

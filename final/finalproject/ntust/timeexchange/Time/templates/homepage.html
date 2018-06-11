@@ -1,0 +1,206 @@
+<!--
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>TimeEXchang</title>
+</head>
+<body>
+	<a href=""><button>會員註冊</button></a>
+	<a href=""><button>會員登錄</button></a>
+	<a href=""><button>商品列表</button></a>
+	<a href=""><button>個人資料</button></a>
+	<a href=""><button>我是賣家</button></a>
+	<a href=""><button>我是買家</button></a>
+	<a href=""><button>會員註冊</button></a>
+</body>
+</html>
+
+<!DOCTYPE HTML>
+-->
+<!--
+	Linear by TEMPLATED
+    templated.co @templatedco
+    Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+{% load staticfiles %} 
+<html>
+	<head>
+		<title>TimeEXchange</title>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<link href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,700,500,900" rel='stylesheet' type='text/css'>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+		<script src="{% static 'js/skel.min.js' %}"></script>
+		<script src="{% static 'js/skel-panels.min.js' %}"></script>
+		<script src="{% static 'js/init.js' %}"></script>
+		
+			<link rel="stylesheet" type="text/css" href="{% static '/css/skel-noscript.css' %}" />
+			<link rel="stylesheet" type="text/css" href="/static/css/style.css" />
+			<link rel="stylesheet" type="text/css" href="{% static '/css/style-desktop.css' %}" />
+		
+	</head>
+	<body class="homepage">
+
+	<!-- Header -->
+		<div id="header">
+			<div id="nav-wrapper"> 
+				<!-- Nav -->
+				<nav id="nav">
+					<ul>
+						<li class="active"><a href="/timeexchange">Homepage</a></li>
+					
+						<li><a href="/timeexchange/goods">商品列表</a></li>
+						<li><a href="/timeexchange/goodspost">刊登商品</a></li>
+						
+						<li>{% if request.user.is_authenticated %}
+							<a href="/timeexchange/register/">我的資料</a>
+							{% else %}
+							<a href="/timeexchange/register">會員註冊</a>
+							{% endif %}
+						</li>
+						
+						<li>{% if request.user.is_authenticated %}
+            				<a>{{request.user}},您好</a>
+            				<a href="/timeexchange/logout/">登出</a>            				
+            				{% else %}
+            				<a href="/timeexchange/login">登入</a>
+        					{% endif %}
+        				</li>
+					</ul>
+				</nav>
+			</div>
+			<div class="container"> 
+				
+				<!-- Logo -->
+				<div id="logo">
+					<h1><a href="#">TimeEXchange</a></h1>
+					<span class="tag">By Yihsiu,George,Titus</span>
+				</div>
+			</div>
+		</div>
+
+	<!-- Featured -->
+		<div id="featured">
+			<div class="container">
+				<header>
+					<h2>Welcome to TimeEXchange</h2>
+				</header>
+				<p>覺得時間太多嗎？來用時間換取能力吧，同時也用你的能力來換取時間代幣</p>
+				<hr />
+				<div class="row">
+					<section class="4u">
+						<span class="pennant"><span class="fa fa-briefcase"></span></span>
+						<h3>註冊會員來領取120枚時間幣</h3>
+						<p>我們絕對不會外流你的個資<br>
+							應該放心交給我們吧（？
+						</p>
+						<a href="/timeexchange/register" class="button button-style1">會員註冊</a>
+					</section>
+					<section class="4u">
+						<span class="pennant"><span class="fa fa-lock"></span></span>
+						<h3>登錄會員秀出你的能力</h3>
+						<p>登錄會員來交換技能<br>
+						說不定能順便交到男/女朋友？</p>
+						<a href="/timeexchange/login" class="button button-style1">會員登錄</a>
+					</section>
+					<section class="4u">
+						<span class="pennant"><span class="fa fa-globe"></span></span>
+						<h3>快來看看有什麼新奇的東東上架了</h3>
+						<p>你好啊旅行者，這裡有你需要的技能嗎<br>什麼？想要學習成為大魔導士的方法？</p>
+						<a href="/timeexchange/goods" class="button button-style1">商品列表</a>
+					</section>
+
+				</div>
+			</div>
+		</div>
+
+	<!-- Main -->
+		<div id="main">
+			<div id="content" class="container">
+
+				<div class="row">
+					<section class="6u">
+						<a href="#" class="image full"><img src="{% static 'images/pic01.jpg' %}" alt="喵！"></a>
+						<header>
+							<h2>我們的token</h2>
+						</header>
+						<p>時間幣Time Minute Dollar(TMD)是什麼？1枚時間幣相當於現實世界中的1分鐘，在這裡你能用時間幣來與他人進行交易技能，或者提供技能來賺取時間幣。<br>
+						當然，我們也很樂意你來當個台幣戰士！</p>
+					</section>				
+					<section class="6u">
+						<a href="#" class="image full"><img src="{% static 'images/pic02.jpg' %}" alt=""></a>
+						<header>
+							<h2>儲值</h2>
+						</header>
+						<p>覺得120枚TMD起手不夠？儲值是你的好選擇。 <br>
+						有錢的人，當然是大爺！</p>
+					</section>				
+				</div>
+
+				<div class="row">
+					<section class="6u">
+						<a href="#" class="image full"><img src="{% static 'images/pic03.jpg' %}" alt=""></a>
+						<header>
+							<h2>設計理念</h2>
+						</header>
+						<p>在這個時間即金錢的年代，就如電影<終點戰>時間可以拿來買東西。</p>
+						<p>所以在這世代，時間的功能不應該單單只用來交易物品，更應該可以用來交易技能，甚至用時間來交易時間。TimeEXchange這個時間交易所，就是自動匹配時間和技能，依照經濟學的供需理論，重新定義時間的價值。整體最小化人類的總閒置時間，創造最大的經濟效益，TO MAKE HUMAN RACE GREAT AGAIN</p>
+					</section>				
+					<section class="6u">
+						<a href="#" class="image full"><img src="{% static 'images/pic04.jpg' %}" alt=""></a>
+						<header>
+							<h2>贊助我們霸托托</h2>
+						</header>
+						<p>銀行帳戶：請私訊作者</p>
+						<p>or</p>
+						<p>Donate with BTC/ETH</p>
+					</section>				
+				</div>
+			
+			</div>
+		</div>
+
+	<!-- Tweet -->
+		<div id="tweet">
+			<div class="container">
+				<section>
+					<blockquote>	
+					&ldquo;人生太短，短到沒時間交女朋友-------王璟元&rdquo;
+				</blockquote>
+					
+				</section>
+			</div>
+		</div>
+
+	<!-- Footer -->
+		<div id="footer">
+			<div class="container">
+				<section>
+					<header>
+						<h2>Male,I can!</h2>
+						<span class="byline">歡迎聯絡我們<br>
+						告訴王警員該怎麼樣交到男朋友
+					    </span>
+						<span class="byline"></span>
+					</header>
+					<ul class="contact">
+						<li><a href="#" class="fa fa-twitter"><span>Twitter</span></a></li>
+						<li class="active"><a href="#" class="fa fa-facebook"><span>Facebook</span></a></li>
+						<li><a href="#" class="fa fa-dribbble"><span>Pinterest</span></a></li>
+						<li><a href="#" class="fa fa-tumblr"><span>Google+</span></a></li>
+					</ul>
+				</section>
+			</div>
+		</div>
+
+	<!-- Copyright -->
+		<div id="copyright">
+			<div class="container">
+				Design: <a href="http://templated.co">TEMPLATED</a> Images: <a href="http://unsplash.com">Unsplash</a> (<a href="http://unsplash.com/cc0">CC0</a>)
+			</div>
+		</div>
+
+	</body>
+</html>

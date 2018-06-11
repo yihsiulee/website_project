@@ -1,0 +1,15 @@
+<html>
+<head>
+	<title>goodsfile</title>
+</head>
+<body>
+	
+	<form action="" method="post">
+		{% csrf_token %}
+        {{goods_form.as_p}}
+	<input type="submit" value="發布">
+    </form>
+   
+</body>
+
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+{%for m in member%}
+會員帳號:{{m.user.username}}<br>
+姓:{{m.user.last_name}}<br>
+名:{{m.user.first_name}}<br>
+會員信箱:{{m.user.email}}<br>
+生日:{{m.birthday}}<br>
+性別:{{m.gender}}<br>
+電話:{{m.phonenumber}}<br>
+餘額:{{m.remaintime}}
+{%endfor%}
+</body>
+</html>
